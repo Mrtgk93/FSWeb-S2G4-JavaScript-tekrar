@@ -18,7 +18,7 @@ function KareninAlani(kenaruzunlugu){
 }
 
 /* (Oto test yok) Yukarıdaki KareninAlani fonksiyonunu kenar uzunluğu = 10 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
-
+/* console.log(KareninAlani(10)); */
 
 
 /* 	GÖREV 1:  
@@ -29,14 +29,14 @@ function KareninAlani(kenaruzunlugu){
 			4. Hesaplanan çemberin çevresi döndürülecektir.
 		*/
 
-function CemberinCevresi(/* kodlar buraya */){
-	/* kodlar buraya */
+function CemberinCevresi(yaricap){
+	return	2*pi*yaricap 
 }
 
 
 /* (Oto test yok) Yukarıdaki CemberinCevresi fonksiyonunu yarıçap = 5 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
 
-
+console.log(CemberinCevresi(5));
 
 
 /* 	GÖREV 2:  
@@ -47,14 +47,15 @@ function CemberinCevresi(/* kodlar buraya */){
 			4. Hesaplanan çemberin alanı döndürülecektir.
 		*/
 		
-function CemberinAlani(/* kodlar buraya */){
-	/* kodlar buraya */
+function CemberinAlani(yaricap,cb_pi,){
+	return cb_pi*Math.pow(yaricap,2);
 }
+
 
 
 /* (Oto test yok) Yukarıdaki CemberinAlani fonksiyonunu yarıçap = 15 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
 
-
+console.log(CemberinAlani(15,pi));
 
 /* 	GÖREV 3:
 		- Sayfanın en üstünde global değişken olarak tanımlanmış bir sayilar dizisi bulunmaktadır. Bu dizi içinde 0 ile 1000 arasında rasgele oluşturulmuş tam sayılar ve ondalıklı sayılar bulunmaktadır. Bu diziyi kullanarak aşağıdakileri uygulayın:
@@ -63,52 +64,91 @@ function CemberinAlani(/* kodlar buraya */){
 			3c. `ucetambolunenler` dizisindeki sayıların toplamını .reduce metoduyla bulup, sonucu `ucebolunenlerintoplami` değişkenine yazdırın (.reduce metodunu kullanın)
 			3d. `besyuzdenkucuksayilar` adında bir dizi oluşturarak, sayilar dizisinin içindeki 500'den küçük sayıları bu diziye atayın (.filter metodunu kullanın)
 			3e. besyuzdenkucuksayilar dizisindeki sayıları küçükten büyüğe sıralayıp `siralisayilar` adındaki bir diziye aktarın (.sort metodunu kullanın)
-			3f. `tekraredensayilar` adında bir dizi oluşturun. sayilar dizisi içerisindeki bazı sayılar birden fazla kere yazılmış. sayilar dizisi içerisinde birden fazla kez yazılmış sayıları tespit ederek kaç kere tekrar edildiğini belirten bir string oluşturulup `tekraredensayilar` dizisine aktarılmasını istiyoruz. Örnek string: "{sayı} sayısı {tekrarSayisi} kere tekrar edilmiştir"
+			3f. `tekraredensayilar` adında bir dizi oluşturun. sayilar dizisi içerisindeki bazı sayılar birden fazla kere yazılmış. sayilar dizisi içerisinde birden
+			fazla kez yazılmış sayıları tespit ederek kaç kere tekrar edildiğini belirten bir string oluşturulup `tekraredensayilar` dizisine aktarılmasını istiyoruz.
+			Örnek string: "{sayı} sayısı {tekrarSayisi} kere tekrar edilmiştir"
 			ÖRNEK: sayilar dizisi içerisinde 45 sayısı 3 kere yazılmış. "45 sayısı 3 tekrar edilmiştir" stringini `tekraredensayilar` dizisine aktaracağız.
 			💡 İPUCU: Tekrar edilen sayıları ve kaç kere tekrar edildiğini kaydetmek için bir nesne tanımlamalısınız, bu görevi yapabilmek için en az 2 kere döngü yazmalısınız. Birinci döngüde hangi sayının kaç kere tekrar edildiğini tespit edip, 2. döngüde stringi oluşturup verilen diziye aktarmalısınız.
 	*/
+	/* 
+		
 	
 	
 /*  (oto test yok) sayilar dizisi içinde kaç adet sayı olduğunu konsola yazdırın */
-
+	console.log(sayilar.length)
 
 
 	var ucetambolunenler, enkucuk, enbuyuk, ucebolunenlerintoplami, besyuzdenkucuksayilar, siralisayilar, tekraredensayilar;
 	
 	//3a çözümü
+	enbuyuk=sayilar[0];
+	enkucuk=sayilar[0];
+	for (let i = 0; i < sayilar.length; i++) {
+		if(enbuyuk<sayilar[i]){
+		enbuyuk=sayilar[i];
+		};
 
-	/* kodlar buraya */
+	if(sayilar[i]<enkucuk){
+		enkucuk=sayilar[i];
+	}};
+
+	/* sayilar.sort(function(a, b){return a - b});
+	enkucuk=sayilar[0];
+	enbuyuk=sayilar[sayilar.length-1];
+	
+		console.log(enbuyuk);
+		console.log(enkucuk);  */
 	
 	
 	
 	// 3b çözümü:
 
-	/* kodlar buraya */
+	ucetambolunenler=[];
+	sayilar.forEach(ucebol);
+	function ucebol(item){
+		if(item%3==0){
+			ucetambolunenler.push(item);
+		}
+	}
+	
+
+	/* for (let i = 0; i < sayilar.length; i++) {
+		if(sayilar[i]%3==0){
+		 ucetambolunenler.push(sayilar[i]);
+		}	 
+	}*/
+	console.log(ucetambolunenler);
+	
 		
 		
 		
 	//3c çözümü:
 	
-	/* kodlar buraya */
-
+	ucebolunenlerintoplami=ucetambolunenler.reduce(myFunc);
+	function myFunc(total,num){
+		return total+num;
+	}
+	console.log(ucebolunenlerintoplami);
 	
 	
 	//3d çözümü
 	
-	/* kodlar buraya */
+	besyuzdenkucuksayilar=sayilar.filter(sayi);
+	function sayi(x){
+		return 500>x;
+	}
 
 
 
 	//3e çözümü
 
-	/* kodlar buraya */
+	siralisayilar=besyuzdenkucuksayilar.sort(function(a, b){return a - b});
+	
 	
 	
 	//3f çözümü
 	
-	/* kodlar buraya */
-
-
+	
 
 
 	
